@@ -1,0 +1,101 @@
+body {
+  padding-top: 10px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #464B58;
+}
+h1{
+  background-color: #656C7F;
+  color: #F5F5F5
+}
+p{
+  color: #F5F5F5
+}
+a {
+  color: #00B7FF;
+}
+.brand-image{
+  width:300px;
+}
+.navbar{
+  display: inline-block;
+  margin-bottom: 0px;
+}
+.navbar-brand{
+  padding: 5px 15px;
+}
+/*D3 styles */
+.node {
+  cursor: pointer;
+}
+
+.overlay{
+  background-color:#EEE;
+}
+
+.node circle {
+  fill: #38B5F3;
+  stroke: #38B5F3;
+  stroke-width: 10px;
+
+}
+
+.node text {
+  font-size:12px;
+  font-family:sans-serif;
+}
+
+.link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 1.5px;
+}
+
+.templink {
+  fill: none;
+  stroke: red;
+  stroke-width: 3px;
+}
+
+.ghostCircle.show{
+  display:block;
+}
+
+.ghostCircle, .activeDrag .ghostCircle{
+  display: none;
+}
+
+#custom-search-input{
+  padding: 3px;
+  border: solid 1px #E4E4E4;
+  border-radius: 6px;
+  background-color: #fff;
+  margin-bottom: 5px;
+  max-width: 800px;
+
+}
+
+#custom-search-input input{
+  border: 0;
+  box-shadow: none;
+}
+
+#custom-search-input button{
+  margin: 2px 0 0 0;
+  background: none;
+  box-shadow: none;
+  border: 0;
+  color: #666666;
+  padding: 0 8px 0 10px;
+  border-left: solid 1px #ccc;
+}
+
+#custom-search-input button:hover{
+  border: 0;
+  box-shadow: none;
+  border-left: solid 1px #ccc;
+
+}
+
+#custom-search-input .glyphicon-search{
+  font-size: 23px;
+}

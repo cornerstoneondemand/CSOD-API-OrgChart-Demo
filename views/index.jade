@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  nav(class="navbar")
+    .container-fluid
+      .col-lg-4
+        .navbar-header
+          a(class="navbar-brand" href="#")
+            img(alt="Cornerstone Edge" class="brand-image" src="/images/CornerstoneEdgeLogo_DarkBg.png")
+      .col-lg-8
+        #custom-search-input
+          .input-group.col-md-12
+            input(type="text" class="form-control input-lg" placeholder="Your Query" value="$select=Id,FirstName,LastName,DirectManagerId&$filter=Id gt 12")
+            span(class = "input-group-btn")
+              button(class="btn btn-info btn-lg" type="submit")
+                i(class="glyphicon glyphicon-search")
+
+
+
+
+
+  #tree-container
+
+block scripts
+  script(src='/javascripts/d3.v3.min.js')
+  script(src='/javascripts/lib/orgchart.js')
+  script(src='/javascripts/index.js')
