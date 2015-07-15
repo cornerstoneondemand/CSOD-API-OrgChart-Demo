@@ -7,6 +7,6 @@ To get started
   3. Set the portal name you wish to query.
 
 This is the format of the .env file
-CSOD_SESSION_TOKEN=YourSessionToken
-CSOD_SESSION_SECRET=YourSessionSecret
-CSOD_PORTAL=YourPortal.csod.com
+  CSOD_SESSION_TOKEN=YourSessionToken
+  CSOD_SESSION_SECRET=YourSessionSecret
+  CSOD_PORTAL=YourPortal.csod.com
