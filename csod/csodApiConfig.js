@@ -2,22 +2,20 @@
  * Created by dhoffman on 1/11/2015.
  */
 
-
+/**
+ *
+ * @constructor
+ */
 var CsodConfig = function(){
-    /*This is your CSOD username. Assuming this is your
-     corporate system, there will need to be a mapping between your user id
-     and the CSOD username if you want to user the method below
-     */
-    //this.apiToken = "your api token here";
-    //this.apiSecret = "your api secret";
-    //
-    //this.sessionToken = "your api token here";
-    //this.sessionSecret = "your api secret";
 
+    this.apiToken = process.env.CSOD_API_TOKEN;
+    this.apiSecret = process.env.CSOD_API_SECRET;
 
+    this.sessionToken = process.env.CSOD_SESSION_TOKEN;
+    this.sessionSecret = process.env.CSOD_SESSION_SECRET;
 
     //put the portal you want to access here
-    //this.portal = "demopm.csod.com";
+    this.portal = process.env.CSOD_PORTAL;
 
 }
 module.exports = CsodConfig;

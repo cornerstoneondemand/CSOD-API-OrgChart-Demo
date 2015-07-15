@@ -1,0 +1,34 @@
+extends layout
+block content
+    nav(class="navbar")
+        .container-fluid
+            .col-lg-4
+                .navbar-header
+                    a(class="navbar-brand" href="#")
+                        img(alt="Cornerstone Edge" class="brand-image" src="/images/CornerstoneEdgeLogo_DarkBg.png")
+            .col-lg-8
+    .container
+        .col-md-5
+            .form-area
+                form(role='form' method='post' action="/user")
+                    br(style='clear:both')
+                    h3(style='margin-bottom: 25px; text-align: center;') Contact Form
+
+                    .form-group
+                        input#first.form-control(type='text', name='FirstName', placeholder='First Name', required='')
+
+                    .form-group
+                        input#last.form-control(type='text', name='LastName', placeholder='Last Name', required='')
+                    .form-group
+                        input#username.form-control(type='text', name='Username', placeholder='User Name', required='')
+
+                    .form-group
+                        input#email.form-control(type='text', name='Email', placeholder='Email', required='')
+
+                    .form-group
+                        input#manager.form-control(type='text', name='DirectManagerId', placeholder='Direct Manager ID', required='')
+
+                    button#submit.btn.btn-primary.pull-right(type='submit') Submit Form
+
+
+block scripts

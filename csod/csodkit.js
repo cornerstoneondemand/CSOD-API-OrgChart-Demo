@@ -56,7 +56,7 @@ CsodApi.prototype.getUtcDate = function(date) {
  httpVerb: GET, POST, PUT
 
  */
-CsodApi.prototype.getCSODHeaders = function(url, sessionToken, sessionSecret, httpVerb) {
+CsodApi.prototype.getCSODHeaders = function(url, sessionToken, sessionSecret, httpVerb, content) {
     var now = new Date();
     var utcNow = this.getUtcDate(now);
 
@@ -71,10 +71,16 @@ CsodApi.prototype.getCSODHeaders = function(url, sessionToken, sessionSecret, ht
     var signature = crypto.createHmac('sha512', secret64).update(sig64).digest('base64');
 
     var headers = {
+
         'x-csod-date': utcNow,
         'x-csod-session-token': this.config.sessionToken,
-        'x-csod-signature': signature
+        'x-csod-signature': signature,
+        'Content-Type': 'application/json'
     };
+    if(content){
+        headers['Content-Length'] = content.length;
+    }
+
     return headers;
 }
 /*
@@ -135,16 +141,52 @@ CsodApi.prototype.getData = function(entity, query, callback, error, isDW){
 /*
 This is a function to save data via the CSOD API.
  */
-CsodApi.prototype.saveData = function(entity, query, payload, callback, error){
+CsodApi.prototype.createData = function(entity, payload, callback, error){
 
+    //need to URL encode spaces in odata query
+    var entityUrl = "/services/data/" + entity;
     var httpVerb = "POST";
+    var payloadStr = JSON.stringify(payload);
     // this is the nodejs structure for the HTTPS request
     var options = {
         host: this.config.portal,
         port: 443,
-        path: path,
+        path: entityUrl,
         method: httpVerb,
-        headers: this.getCSODHeaders(entityUrl, this.config.sessionToken, this.config.sessionSecret, httpVerb)
+        headers: this.getCSODHeaders(entityUrl, this.config.sessionToken, this.config.sessionSecret, httpVerb, payloadStr)
     };
+
+    var post_req = https.request(options, function(res){
+
+
+        var responseString = '';
+
+        if(res.statusCode != 201){
+            console.log('STATUS: ' + res.statusCode);
+            console.log('HEADERS: ' + JSON.stringify(res.headers));
+            //error(res);
+        }
+
+        res.on('data', function (chunk) {
+            responseString+=chunk;
+        });
+
+        res.on('end', function () {
+            callback(responseString);
+        });
+
+
+    });
+    post_req.on('error', function(err){
+        console.log('problem with request: ' + err.message);
+        error(err);
+    })
+
+
+    post_req.write(payloadStr);
+    post_req.end();
+
 }
+
+
 module.exports = CsodApi;

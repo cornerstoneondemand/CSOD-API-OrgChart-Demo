@@ -7,9 +7,12 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var user = require('./routes/user');
 var userchart = require('./routes/userchart');
 var odata = require('./routes/odata');
 var dw = require('./routes/dw');
+
+var env = require('dotenv').load();
 
 //var transcriptData = require('./routes/transcript');
 
@@ -33,6 +36,7 @@ app.use('/userchart', userchart);
 //app.use('/transcript/data', transcriptData);
 app.use('/dw', dw);
 app.use('/odata', odata);
+app.use('/user', user);
 
 
 // catch 404 and forward to error handler
