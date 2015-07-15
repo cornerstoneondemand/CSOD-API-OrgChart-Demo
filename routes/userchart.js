@@ -86,8 +86,8 @@ function findReports(node, employees){
 * */
 router.get('/', function(req, res) {
 
-    var config = new CsodConfig();
-    var api = new CsodApi(config);
+
+    var api = new CsodApi(new CsodConfig());
     var query = req.url.substring(req.url.indexOf("?")+1, req.url.length);
 
 

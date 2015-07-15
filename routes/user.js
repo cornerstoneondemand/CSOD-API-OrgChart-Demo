@@ -16,8 +16,8 @@ router.get('/', function(req, res) {
  * posts the form data to create a new user
  */
 router.post('/', function(req, res){
-    var config = new CsodConfig();
-    var api = new CsodApi(config);
+
+    var api = new CsodApi(new CsodConfig());
 
     var employee = req.body;
     employee.RequiredTrainingApprovals = 0;

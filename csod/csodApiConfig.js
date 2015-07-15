@@ -6,6 +6,7 @@
  *
  * @constructor
  */
+
 var CsodConfig = function(){
 
     this.apiToken = process.env.CSOD_API_TOKEN;

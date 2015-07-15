@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var env = require('dotenv').load();
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -12,7 +13,7 @@ var userchart = require('./routes/userchart');
 var odata = require('./routes/odata');
 var dw = require('./routes/dw');
 
-var env = require('dotenv').load();
+
 
 //var transcriptData = require('./routes/transcript');
 
